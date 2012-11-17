@@ -16,6 +16,6 @@ if suggested.nil?
   csc.increment(input)
   puts "#{csc.count}"
 else
-  csc.mistake!
+  csc.mistake!(input)
   puts "#{suggested} (#{csc.count})"
 end

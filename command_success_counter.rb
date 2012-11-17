@@ -37,7 +37,8 @@ class CommandSuccessCounter
     end
   end
 
-  def mistake!
+  def mistake!(input)
+    self.data[:mistaken_command] = input
     self.data[:count] = [self.data[:count] - @@negative_points, 0].max
     self.write
   end
