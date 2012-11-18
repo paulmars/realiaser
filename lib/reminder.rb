@@ -7,10 +7,10 @@ require File.join(directory_name, 'command_success_counter.rb')
 csc = Realiased::CommandSuccessCounter.new
 
 path = File.expand_path("~/.alias.cache")
-reader = Realiased::AliasSuggestor.new(path)
+suggestor = Realiased::AliasSuggestor.new(path)
 
 input = ARGF.read.strip
-suggested = reader.suggest(input)
+suggested = suggestor.suggest(input)
 
 if suggested.nil?
   csc.increment(input)
