@@ -1,3 +1,5 @@
+module Realiased
+
 class AliasSuggestor
   attr_accessor :alias_lines
 
@@ -13,4 +15,6 @@ class AliasSuggestor
   def suggest(command)
     @alias_lines[command]
   end
+end
+
 end

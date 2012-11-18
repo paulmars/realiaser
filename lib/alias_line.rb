@@ -1,3 +1,4 @@
+module Realiased
 class AliasLine
 
   attr_accessor :shell_alias, :shell_command, :alias_line
@@ -26,4 +27,5 @@ private
   def nocorrect?
     @alias_line.scan("nocorrect") != []
   end
+end
 end

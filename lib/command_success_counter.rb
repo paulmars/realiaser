@@ -1,3 +1,5 @@
+module Realiased
+
 class CommandSuccessCounter
 
   require 'fileutils'
@@ -82,5 +84,7 @@ protected
   def file_exists?
     File.exists?(path)
   end
+
+end
 
 end
