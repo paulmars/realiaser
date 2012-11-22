@@ -5,7 +5,8 @@ class CommandSuccessCounter
   require 'fileutils'
   require 'yaml'
 
-  @@default_file_location = "~/.realias_success_metrics"
+  @@default_file_location = "~/.realiaser_success_metrics"
+  @@history_file = "~/.realiaser_history"
 
   @@positive_points = 1
   @@negative_points = 50
@@ -51,6 +52,11 @@ class CommandSuccessCounter
     self.data[:high_score_at] = Time.now
   end
 
+  def append_command(command, points)
+    history_file << "#{command}:#{points}\n"
+    history_file.close
+  end
+
 protected
 
   def high_score?
@@ -63,6 +69,10 @@ protected
     @data[:high_score_at] ||= Time.now
   end
 
+  def history_file
+    File.new(history_path, 'a')
+  end
+
   def load
     self.data = YAML.load(File.new(path, 'r').read)
   end
@@ -71,6 +81,10 @@ protected
     file = File.new(path, 'w')
     file << data.to_yaml
     file.close
+  end
+
+  def history_path
+    File.expand_path(@@history_file)
   end
 
   def path

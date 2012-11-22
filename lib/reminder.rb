@@ -14,8 +14,10 @@ suggested = suggestor.suggest(input)
 
 if suggested.nil?
   csc.increment(input)
+  csc.append_command(input, 1)
   puts "#{csc.count}"
 else
   csc.mistake!(input)
+  csc.append_command(input, -50)
   puts "#{suggested} (#{csc.count})"
 end
