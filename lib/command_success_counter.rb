@@ -52,8 +52,12 @@ class CommandSuccessCounter
     self.data[:high_score_at] = Time.now
   end
 
-  def append_command(command, points)
-    history_file << "#{command}:#{points}\n"
+  def append_command(command, increment)
+    if increment
+      history_file << "#{command}:#{@@positive_points}\n"
+    else
+      history_file << "#{command}:#{@@negative_points}\n"
+    end
     history_file.close
   end
 
