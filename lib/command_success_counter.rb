@@ -81,6 +81,9 @@ protected
 
   def load
     @data = YAML.load(File.new(path, 'r').read)
+    unless @data.instance_of?(Hash)
+      @data = {}
+    end
   end
 
   def write
