@@ -65,7 +65,7 @@ describe Realiased::CommandSuccessCounter do
         :<< => nil,
         :close => nil,
       })
-      File.should_receive(:new).with(path, 'w').and_return(file)
+      File.stub(:new).with(path, 'w').and_return(file)
     end
 
     it "has default data" do
@@ -76,6 +76,7 @@ describe Realiased::CommandSuccessCounter do
     end
 
     it "writes a file" do
+      File.should_receive(:new).with(path, 'w').and_return(file)
       Realiased::CommandSuccessCounter.new
     end
   end
