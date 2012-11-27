@@ -46,12 +46,6 @@ class CommandSuccessCounter
     self.write
   end
 
-  def mark_high_score
-    return unless high_score?
-    self.data[:high_score] = count
-    self.data[:high_score_at] = Time.now
-  end
-
   def append_command(command, increment)
     if increment
       history_file << "#{command}:#{@@positive_points}\n"
@@ -62,6 +56,12 @@ class CommandSuccessCounter
   end
 
 protected
+
+  def mark_high_score
+    return unless high_score?
+    self.data[:high_score] = count
+    self.data[:high_score_at] = Time.now
+  end
 
   def high_score?
     count > high_score
