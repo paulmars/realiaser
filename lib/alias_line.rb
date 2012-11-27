@@ -14,10 +14,6 @@ class AliasLine
     !nocorrect? && !transpose?
   end
 
-  def to_s
-    "#{@shell_command}: #{@shell_alias}"
-  end
-
 private
 
   def transpose?
