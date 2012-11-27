@@ -70,8 +70,9 @@ protected
   end
 
   def set_defaults!
-    @data[:score] ||= 1
-    @data[:high_score] ||= 1
+    @data[:score] ||= 0
+    @data[:high_score] ||= 0
+    @data[:high_score_at] ||= Time.now
   end
 
   def history_file
