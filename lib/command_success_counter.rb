@@ -33,7 +33,7 @@ class CommandSuccessCounter
     @data[:high_score_at]
   end
 
-  def increment(last_line)
+  def correct!(last_line)
     if @data[:last_line] != last_line
       @data[:last_line] = last_line
       @data[:score] = @data[:score] + @@positive_points
