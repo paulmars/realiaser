@@ -15,9 +15,9 @@ suggested = suggestor.suggest(input)
 if suggested.nil?
   csc.increment(input)
   csc.append_command(input, true)
-  puts "#{csc.count}"
+  puts "#{csc.score}"
 else
   csc.mistake!(input)
   csc.append_command(input, false)
-  puts "#{suggested} (#{csc.count})"
+  puts "#{suggested} (#{csc.score})"
 end

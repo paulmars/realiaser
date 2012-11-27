@@ -11,8 +11,6 @@ class CommandSuccessCounter
   @@positive_points = 1
   @@negative_points = 50
 
-  attr_accessor :count, :data, :path
-
   def initialize
     if !file_exists?
       @data = {}
@@ -23,26 +21,30 @@ class CommandSuccessCounter
     set_defaults!
   end
 
-  def count
-    self.data[:count]
+  def score
+    @data[:score]
   end
 
   def high_score
-    self.data[:high_score]
+    @data[:high_score]
+  end
+
+  def high_score_at
+    @data[:high_score_at]
   end
 
   def increment(last_line)
-    if self.data[:last_line] != last_line
-      self.data[:last_line] = last_line
-      self.data[:count] = self.data[:count] + @@positive_points
+    if @data[:last_line] != last_line
+      @data[:last_line] = last_line
+      @data[:score] = @data[:score] + @@positive_points
       mark_high_score
       self.write
     end
   end
 
   def mistake!(input)
-    self.data[:mistaken_command] = input
-    self.data[:count] = [self.data[:count] - @@negative_points, 0].max
+    @data[:mistaken_command] = input
+    @data[:score] = [@data[:score] - @@negative_points, 0].max
     self.write
   end
 
@@ -59,18 +61,17 @@ protected
 
   def mark_high_score
     return unless high_score?
-    self.data[:high_score] = count
-    self.data[:high_score_at] = Time.now
+    @data[:high_score] = score
+    @data[:high_score_at] = Time.now
   end
 
   def high_score?
-    count > high_score
+    score > high_score
   end
 
   def set_defaults!
-    @data[:count] ||= 0
-    @data[:high_score] ||= 0
-    @data[:high_score_at] ||= Time.now
+    @data[:score] ||= 1
+    @data[:high_score] ||= 1
   end
 
   def history_file
@@ -78,12 +79,12 @@ protected
   end
 
   def load
-    self.data = YAML.load(File.new(path, 'r').read)
+    @data = YAML.load(File.new(path, 'r').read)
   end
 
   def write
     file = File.new(path, 'w')
-    file << data.to_yaml
+    file << @data.to_yaml
     file.close
   end
 
