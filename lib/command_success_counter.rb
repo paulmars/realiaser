@@ -33,6 +33,10 @@ class CommandSuccessCounter
     @data[:high_score_at]
   end
 
+  def data
+    @data
+  end
+
   def correct!(last_line)
     if @data[:last_line] != last_line
       @data[:last_line] = last_line
@@ -42,17 +46,20 @@ class CommandSuccessCounter
     end
   end
 
-  def mistake!(input)
-    @data[:mistaken_command] = input
-    @data[:score] = [@data[:score] - @@negative_points, 0].max
-    self.write
+  def mistake!(last_line)
+    if @data[:last_line] != last_line
+      @data[:last_line] = last_line
+      @data[:mistaken_command] = last_line
+      @data[:score] = [@data[:score] - @@negative_points, 0].max
+      self.write
+    end
   end
 
   def append_command(command, increment)
     if increment
-      history_file << "#{command}:#{@@positive_points}\n"
+      history_file << "#{command}:#{@@positive_points}:#{score}\n"
     else
-      history_file << "#{command}:#{@@negative_points}\n"
+      history_file << "#{command}:#{@@negative_points}:#{score}\n"
     end
     history_file.close
   end
@@ -96,8 +103,12 @@ protected
     File.expand_path(@@history_file)
   end
 
-  def path
+  def self.path
     File.expand_path(@@default_file_location)
+  end
+
+  def path
+    self.class.path
   end
 
   def touch

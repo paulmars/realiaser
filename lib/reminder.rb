@@ -13,7 +13,7 @@ input = ARGF.read.strip
 suggested = suggestor.suggest(input)
 
 if suggested.nil?
-  csc.increment(input)
+  csc.correct!(input)
   csc.append_command(input, true)
   puts "#{csc.score}"
 else
