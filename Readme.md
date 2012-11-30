@@ -12,7 +12,7 @@ This is a pretty small library, only a two hour hack, but I've already started u
 Features
 ---------------------
 
-* Tells if you if your last command was too long.
+* Tells if you if your last command should have used an alias.
 * Keeps track of your score.
 * Keeps track of your last successful command and unsuccessful command.
 * Doesn't modify your ENV in any way.
@@ -28,8 +28,10 @@ There are two parts to the installation. The library and integrating it with you
 sudo gem install realiaser
 
 # the ruby script needs to be able to access aliases defined in the shell conf
-alias > ~/.aliases.cache
+alias > ~/.alias.cache
 ```
+
+This is the hard part. You need to change your right shell prompt.
 
 ```
 function last_command() {
@@ -38,6 +40,16 @@ function last_command() {
 
 RPROMPT='%{$fg[$NCOLOR]%}%p $(last_command)%{$reset_color%}'
 ````
+
+I have new aliases and it doesn't notice them.
+---------------------
+
+The ruby script can't see aliases in the environment.
+
+```script
+alias > ~/.alias.cache
+```
+
 
 Update
 ---------------------
