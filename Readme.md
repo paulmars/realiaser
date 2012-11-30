@@ -16,7 +16,6 @@ Features
 * Keeps track of your score.
 * Keeps track of your last successful command and unsuccessful command.
 * Doesn't modify your ENV in any way.
-* Works on ZSH.
 
 Installation
 ---------------------
