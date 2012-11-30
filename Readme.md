@@ -56,8 +56,3 @@ Update
 ```script
 gem update realiaser
 ````
-
-LOL, WTF
----------------------
-
-Yep, and I would do it again.
