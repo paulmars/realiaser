@@ -57,9 +57,9 @@ class CommandSuccessCounter
 
   def append_command(command, increment)
     if increment
-      history_file << "#{command}:#{@@positive_points}\n"
+      history_file << "#{command}:#{@@positive_points}:#{score}\n"
     else
-      history_file << "#{command}:#{@@negative_points}\n"
+      history_file << "#{command}:#{@@negative_points}:#{score}\n"
     end
     history_file.close
   end
