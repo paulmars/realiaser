@@ -46,10 +46,13 @@ class CommandSuccessCounter
     end
   end
 
-  def mistake!(input)
-    @data[:mistaken_command] = input
-    @data[:score] = [@data[:score] - @@negative_points, 0].max
-    self.write
+  def mistake!(last_line)
+    if @data[:last_line] != last_line
+      @data[:last_line] = last_line
+      @data[:mistaken_command] = last_line
+      @data[:score] = [@data[:score] - @@negative_points, 0].max
+      self.write
+    end
   end
 
   def append_command(command, increment)
