@@ -33,6 +33,10 @@ class CommandSuccessCounter
     @data[:high_score_at]
   end
 
+  def data
+    @data
+  end
+
   def correct!(last_line)
     if @data[:last_line] != last_line
       @data[:last_line] = last_line
