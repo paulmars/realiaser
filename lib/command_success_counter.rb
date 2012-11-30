@@ -103,8 +103,12 @@ protected
     File.expand_path(@@history_file)
   end
 
-  def path
+  def self.path
     File.expand_path(@@default_file_location)
+  end
+
+  def path
+    self.class.path
   end
 
   def touch
