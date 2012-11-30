@@ -12,7 +12,7 @@ This is a pretty small library, only a two hour hack, but I've already started u
 Features
 ---------------------
 
-* Tells if you if your last command should have used an alias.
+* Tells if you your last command should have used an alias.
 * Keeps track of your score.
 * Keeps track of your last successful command and unsuccessful command.
 * Doesn't modify your ENV in any way.
