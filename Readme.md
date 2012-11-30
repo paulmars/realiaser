@@ -56,3 +56,10 @@ Update
 ```script
 gem update realiaser
 ````
+
+Questions
+---------------------
+
+Q: Isn't this going to slow down my CLI?
+
+A: Running Ruby on every command isn't ideal, but it turns out that it didn't slow me down at all.

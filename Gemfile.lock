@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    realiaser (0.0.1)
+    Realiaser (0.0.1)
 
 GEM
   remote: http://rubygems.org/
@@ -26,7 +26,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Realiaser!
   rake
-  realiaser!
   rspec
   simplecov
