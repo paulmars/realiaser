@@ -34,7 +34,7 @@ This is the hard part. You need to change your right shell prompt.
 
 ```
 function last_command() {
-  echo `history -1 | cut -d ' ' -f 3-20 | /usr/bin/ruby ~/Development/realias/lib/reminder.rb`
+  echo `history -1 | cut -d ' ' -f 3-20 | realiaser`
 }
 
 RPROMPT='%{$fg[$NCOLOR]%}%p $(last_command)%{$reset_color%}'
