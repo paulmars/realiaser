@@ -63,3 +63,19 @@ Questions
 Q: Isn't this going to slow down my CLI?
 
 A: Running Ruby on every command isn't ideal, but it turns out that it didn't slow me down at all.
+
+```
+time history -1 | cut -d ' ' -f 3-20 | /usr/bin/ruby -I~/Development/realiaser/lib ~/Development/realiaser/bin/realiaser                                          25
+
+# Output
+25
+
+# First command
+history -1  0.00s user 0.00s system 24% cpu 0.003 total
+
+# Second command
+cut -d ' ' -f 3-20  0.00s user 0.00s system 81% cpu 0.004 total
+
+# Third command
+/usr/bin/ruby -I~/Development/realiaser/lib   0.04s user 0.01s system 74% cpu 0.066 total
+```
