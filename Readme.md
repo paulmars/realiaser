@@ -40,6 +40,8 @@ function last_command() {
 RPROMPT='%{$fg[$NCOLOR]%}%p $(last_command)%{$reset_color%}'
 ````
 
+Check the options on your machine for "history". This configuration is for ZSH and needs slight ajusting for Bash or other configuartions
+
 I have new aliases and it doesn't notice them.
 ---------------------
 
